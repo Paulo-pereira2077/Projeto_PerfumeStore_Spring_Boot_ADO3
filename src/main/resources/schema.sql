@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS perfume;
+
+CREATE TABLE IF NOT EXISTS perfume (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  brand VARCHAR(255),
+  fragrance_family VARCHAR(255),
+  volume VARCHAR(50),
+  price DOUBLE
+);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo | PerfumeStore</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.4.2/css/all.min.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Nosso Catálogo de Perfumes</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col" th:each="perfume : ${perfumes}">
+      <div class="card h-100 shadow-sm border-0">
+
+        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTJPr2BNMx5V-LohchU0KINIu_3S6bIYhkjTnY0f3VB5MBxHUUnflFoO3SaE9-6uDdtIkqwrBFxUH1MZ-KRDEsOyHAQ4LzfME2pmC7FSigJ1HteJXQmJ7AML4mi7uGiOFULfjt7bg&usqp=CAc" class="card-img-top" alt="Foto do Perfume" style="height: 280px; object-fit: cover;">
+
+        <div class="card-body">
+          <h5 class="card-title fw-bold" th:text="${perfume.name}">Nome do Perfume</h5>
+          <h6 class="card-subtitle mb-3 text-muted" th:text="${perfume.brand}">Marca</h6>
+
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item px-0">
+              <i class="fa-solid fa-leaf text-success"></i> <strong>Família:</strong> <span th:text="${perfume.fragranceFamily}"></span>
+            </li>
+            <li class="list-group-item px-0">
+              <i class="fa-solid fa-flask text-info"></i> <strong>Volume:</strong> <span th:text="${perfume.volume}"></span>
+            </li>
+            <li class="list-group-item px-0">
+              <i class="fa-solid fa-tag text-warning"></i> <strong>Preço:</strong> R$ <span th:text="${perfume.price}"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-footer bg-white border-0 text-center pb-3">
+          <button class="btn btn-outline-dark w-100">Ver Detalhes</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

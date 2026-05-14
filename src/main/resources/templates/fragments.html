@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="navbar">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-4"> <div class="container">
+    <a class="navbar-brand" th:href="@{/public/perfumes}">
+      <i class="fa-solid fa-flask"></i> PerfumeStore
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/public/perfumes}">Catálogo</a>
+        </li>
+        <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+          <a class="nav-link" th:href="@{/admin}">Novo Perfume</a>
+        </li>
+        <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+          <a class="nav-link" th:href="@{/admin/perfumes}">Gerenciar Estoque</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+          <a class="btn btn-primary btn-sm ms-2 mt-1" th:href="@{/login}">Entrar</a>
+        </li>
+
+        <li class="nav-item d-flex align-items-center" sec:authorize="isAuthenticated()">
+            <span class="navbar-text me-3 text-white">
+               Olá, <strong sec:authentication="name">Usuário</strong>!
+            </span>
+          <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-outline-danger btn-sm mt-1">Sair</button>
+          </form>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  </nav>
+</div>
+</body>
+</html>
