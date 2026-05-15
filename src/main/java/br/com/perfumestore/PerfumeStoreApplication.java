@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PerfumeStoreApplication {
 
-	public static void main(String[\\hello
-			] args) {
+	public static void main(String[] args) {
 		SpringApplication.run(PerfumeStoreApplication.class, args);
 	}
 
